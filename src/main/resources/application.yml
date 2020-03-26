@@ -1,0 +1,15 @@
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+
+ribbon:
+  eureka:
+    enabled: false
+
+rb-provider:
+  ribbon:
+    ReadTimeout: 60000
+    ConnectionTimeout: 60000
+    listOfServers: http://172.24.8.132

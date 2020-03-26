@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'cn.com.dnt.feign'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "Hoxton.SR3")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	implementation 'io.github.openfeign:feign-gson'
+	implementation 'io.github.openfeign:feign-okhttp'
+	implementation 'io.github.openfeign:feign-httpclient'
+	implementation 'io.github.openfeign:feign-ribbon'
+	implementation 'com.alibaba:fastjson:1.2.28'
+	implementation 'commons-beanutils:commons-beanutils:1.9.3'
+	implementation 'commons-collections:commons-collections:3.2.1'
+	implementation 'commons-logging:commons-logging:1.1.1'
+	implementation 'commons-lang:commons-lang:2.6'
+	implementation 'net.sf.ezmorph:ezmorph:1.0.6'
+	implementation 'net.sf.json-lib:json-lib:2.2.3:jdk15'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
